@@ -1,5 +1,5 @@
 import userService from '../services/register.js';
-import asyncHandler from '../util.js';
+
 
 const _render = (req, res) => {
     res.render('users/register')
@@ -10,4 +10,4 @@ const register = async (req, res, next) => {
     await userService(username, password)
     res.send('Register Successfully')
 }
-export default { _render, register };
+export default { register, _render };
