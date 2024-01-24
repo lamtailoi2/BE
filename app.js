@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
     res.json('Hello')
 })
 
-app.use('/user', router1)
+app.use('/users', router1)
 app.listen(port, () => {
     console.log(`Server start on port ${port}`);
 })
