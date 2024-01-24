@@ -1,12 +1,94 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
+<style>
+    * {
+        margin: 0;
+    }
+
+    body {
+        background-color: #171717;
+    }
+
+    .header {
+        background-color: #8751c9;
+        height: 50px;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+
+    }
+
+    .selector {
+        position: relative;
+        /* left: 70%; */
+        display: flex;
+        justify-content: end;
+        padding-right: 20%;
+        padding-top: 5px;
+    }
+
+    span {
+        padding: 0 15px;
+        font-size: 30px;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        color: #e2e1e3;
+    }
+
+    img {
+        height: 50px;
+        width: 50px;
+        padding-left: 15%;
+    }
+
+    .welcome {
+        display: flex;
+        justify-content: center;
+        margin: 50px 0% 0% 130px;
+    }
+
+    .intro {
+        font-family: monospace;
+        font-size: 85px; 
+        color: #c2c1bc;
+        letter-spacing: 5px;
+    }
+    #biglogo {
+        object-fit: contain;
+        height: 350px;
+        width: 50%;
+        padding-right: 170px;
+    }
+    .selector1:hover {
+        color:lightgreen
+    }
+
+</style>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/styles/logged.css">
 </head>
+
 <body>
-    <header><H1>Hello</H1></header>
-    
+    <div class="header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Pepsi_2023.svg/900px-Pepsi_2023.svg.png" alt="">
+        <div class="selector">
+            <span class="selector1" onclick="">Home</span>
+            <span class="selector1">Blog</span>
+        </div>
+    </div>
+    <div class="welcome">
+        <p class="intro">
+            Hi! <br> 
+            Im Loi <br>
+            Welcome to my portforlio <br>
+        </p>
+        <img id="biglogo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Pepsi_2023.svg/300px-Pepsi_2023.svg.png" alt="">
+    </div>
 </body>
+
 </html>

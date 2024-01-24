@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/users', registerRouter, loginRouter)
-app.use('/logged', loggedRouter)
+app.use('/logged/:id', loggedRouter)
 app.listen(port, () => {
     console.log(`Server start on port ${port}`);
 })

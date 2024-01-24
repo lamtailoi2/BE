@@ -5,10 +5,10 @@ const _render = (req, res) => {
 }
 
 const login = async (req, res, next) => {
-    const { username, password } = req.body;
+    const { username, password} = req.body;
     await loginService(username, password)
     // res.send('Login Successfully')
-    res.redirect('/logged')
+    res.redirect("/logged/id")
 }
 
 export default { _render,login }
