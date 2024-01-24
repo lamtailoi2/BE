@@ -1,6 +1,5 @@
 import { Router } from 'express'
 import UserController from '../controllers/register.controller.js'
-import exp from 'constants';
 
 const router = Router();
 
