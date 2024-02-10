@@ -1,14 +1,21 @@
 import userModel from "../models/users.js";
-import asyncHandler from "../util.js";
+import AppError from "../core/errorhandler.js"
+import jwt from 'jsonwebtoken'
 
-
-const login = async (username, password,next) => {
-    const foundUser = await userModel.findOne({
-        username,
-        password
-    })
-    if (!foundUser)
-        throw new Error('User is not existed')
+const signToken = (id) => {
+    return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN })
 }
 
-export  default login
+const login = async (username, password, next) => {
+    if (!username || !password)
+        throw new AppError('Input your username or password', 401)
+    const user = await userModel.findOne({
+        username,
+    }).select('+password')
+    if (!user || !(await user.correctPassword(password, user.password)))
+        throw new AppError('Input your username or password', 401)
+    const token = signToken(user._id)
+    return token;
+}
+
+export default login

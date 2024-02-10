@@ -1,17 +1,29 @@
 import userModel from "../models/users.js";
-import asyncHandler from "../util.js";
+
+import jwt from 'jsonwebtoken'
+import AppError from '../core/errorhandler.js'
 
 
-const register = async (username, password, next) => {
+const signToken = (id) => {
+    return jwt.sign({id}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRES_IN})
+}
+
+const register = async (username, password, email, comfirmPassword, next) => {
+    
     const foundUser = await userModel.findOne({
-        username
+        email,
     })
     if (foundUser)
-        throw new Error('User is already existed')
-    userModel.create({
+        throw new AppError('User is existed', 401)
+
+    const newUser = await userModel.create({
         username,
-        password
-    }) 
+        email,
+        password,
+        comfirmPassword
+    })
+    const token = signToken(newUser._id)
+    return token
 }
 
 export  default register
